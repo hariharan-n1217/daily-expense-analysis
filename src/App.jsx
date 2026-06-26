@@ -343,6 +343,48 @@ function App() {
           </section>
         </div>
       )}
+
+      {/* GLOBAL EXPERT CONTACT FOOTER PANEL */}
+      <footer style={{
+        marginTop: 'auto',
+        background: '#12111f',
+        padding: '1.5rem 2rem',
+        borderTop: '2px solid #242238',
+        boxShadow: '0 -4px 20px rgba(0, 0, 0, 0.3)',
+        display: 'flex',
+        flexDirection: window.innerWidth > 768 ? 'row' : 'column',
+        justifyContent: 'space-between',
+        alignItems: window.innerWidth > 768 ? 'center' : 'flex-start',
+        gap: '1.25rem'
+      }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+          <span style={{ fontSize: '1rem', fontWeight: 900, color: '#00f0ff', letterSpacing: '0.02em' }}>
+            Developer Profile: S. HARIHARAN
+          </span>
+          <span style={{ fontSize: '#f8fafc', fontSize: '0.85rem', color: '#8a88a3' }}>
+            BSc Computer Science (Final Year) &bull; Bharathiar University
+          </span>
+          <span style={{ fontSize: '0.8rem', color: '#64748b', marginTop: '2px' }}>
+            <strong style={{ color: '#00f0ff' }}>Core Stack:</strong> Python | <strong style={{ color: '#8a88a3' }}>Foundations:</strong> C, C++, Java, HTML, CSS, JavaScript
+          </span>
+        </div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center' }}>
+          <a href="mailto:hxcoretech@gmail.com" style={{
+            color: '#ffffff', background: '#1b192e', border: '1px solid #242238', 
+            padding: '0.5rem 1rem', borderRadius: '8px', fontSize: '0.85rem', fontWeight: 700, 
+            textDecoration: 'none', transition: 'all 0.2s'
+          }}>
+            📧 hxcoretech@gmail.com
+          </a>
+          <a href="https://instagram.com/hari.haran__07" target="_blank" rel="noreferrer" style={{
+            color: '#00f0ff', background: 'rgba(0, 240, 255, 0.05)', border: '1px solid rgba(0, 240, 255, 0.2)', 
+            padding: '0.5rem 1rem', borderRadius: '8px', fontSize: '0.85rem', fontWeight: 700, 
+            textDecoration: 'none', transition: 'all 0.2s'
+          }}>
+            📸 @hari.haran__07
+          </a>
+        </div>
+      </footer>
     </div>
   );
 }
