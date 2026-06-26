@@ -6,6 +6,7 @@ from typing import List, Dict
 
 app = FastAPI()
 
+# Global CORS Policy allows the deployed Vercel frontend to seamlessly communicate
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -19,7 +20,6 @@ DB_FILE = "database.db"
 def init_db():
     conn = sqlite3.connect(DB_FILE)
     cursor = conn.cursor()
-    # Existing transactions table
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS transactions (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -29,7 +29,6 @@ def init_db():
             type TEXT NOT NULL
         )
     """)
-    # NEW: Friends table for bill splitting
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS friends (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -41,7 +40,6 @@ def init_db():
 
 init_db()
 
-# Data models
 class TransactionCreate(BaseModel):
     text: str
     amount: float
@@ -98,7 +96,6 @@ def get_analytics_summary():
         "category_breakdown": categories
     }
 
-# NEW FRIENDS MANAGEMENT ENDPOINTS
 @app.get("/api/friends")
 def get_friends():
     conn = sqlite3.connect(DB_FILE)
