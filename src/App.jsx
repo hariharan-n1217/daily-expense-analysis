@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 function App() {
-  // Navigation State: 'home', 'split', or 'about'
   const [view, setView] = useState('home');
-
   const [transactions, setTransactions] = useState([]);
   const [analytics, setAnalytics] = useState({ total_income: 0, total_expense: 0, category_breakdown: {} });
   const [friends, setFriends] = useState([]);
@@ -155,21 +153,25 @@ function App() {
           <p>Enterprise Strategy Suite &bull; Active Internship Project</p>
         </div>
         <nav className="header-navigation">
-          <button onClick={() => setView('home')} className={`nav-btn ${view === 'home' ? 'active' : ''}`}>
+          <button 
+            onClick={() => setView('home')} 
+            className={`nav-btn ${view === 'home' ? 'active' : ''}`}
+          >
             Dashboard Home
           </button>
-          <button onClick={() => setView('split')} className={`nav-btn ${view === 'split' ? 'active' : ''}`}>
+          <button 
+            onClick={() => setView('split')} 
+            className={`nav-btn ${view === 'split' ? 'active' : ''}`}
+          >
             Group Bill Splitter
-          </button>
-          <button onClick={() => setView('about')} className={`nav-btn ${view === 'about' ? 'active' : ''}`} style={{ borderColor: 'var(--border-neon)' }}>
-            About Developer
           </button>
         </nav>
       </header>
 
-      {/* DYNAMIC SUB-PAGE RENDER SYSTEM */}
-      {view === 'home' && (
+      {/* RENDER PAGES */}
+      {view === 'home' ? (
         <div className="page-padding">
+          {/* STATS MATRIX */}
           <section className="stats-grid">
             <div className="stat-card">
               <div className="stat-label">Net Operating Cash</div>
@@ -191,7 +193,9 @@ function App() {
             </div>
           </section>
 
+          {/* MAIN GRID CONTROL */}
           <main className="main-content-grid">
+            {/* PANEL 1: FORMS */}
             <section className="panel-card">
               <h2 className="panel-title">Post New Ledger Entry</h2>
               <form onSubmit={handleTransactionSubmit} className="form-stack">
@@ -226,6 +230,7 @@ function App() {
               </form>
             </section>
 
+            {/* PANEL 2: DISTRIBUTION METRICS & AUDIT LOGS */}
             <div className="secondary-column-stack">
               <section className="panel-card">
                 <h2 className="panel-title">Category Distribution Metrics</h2>
@@ -272,7 +277,7 @@ function App() {
                           <span className={`audit-amount ${t.type}`}>
                             {t.type === 'income' ? '+' : '-'}₹{t.amount.toLocaleString('en-IN', { minimumFractionDigits: 2 })}
                           </span>
-                          <span className="btn-delete-item" onClick={() => handleDropItem(t.id)} style={{cursor:'pointer'}}>&times;</span>
+                          <button onClick={() => handleDropItem(t.id)} className="btn-delete-item">&times;</button>
                         </div>
                       </div>
                     ))
@@ -282,9 +287,8 @@ function App() {
             </div>
           </main>
         </div>
-      )}
-
-      {view === 'split' && (
+      ) : (
+        /* BILL SPLITTER VIEW */
         <div className="page-padding main-content-grid">
           <section className="panel-card">
             <h2 className="panel-title space-between">
@@ -297,7 +301,9 @@ function App() {
               <input type="text" placeholder="Enter friend's name..." value={friendName} onChange={(e) => setFriendName(e.target.value)} />
               <button type="submit">+ Add Member</button>
             </form>
-            <label className="input-group-label">Active Circle Members ({friends.length + 1})</label>
+            <label className="input-group-label">
+              Active Circle Members ({friends.length + 1})
+            </label>
             <div className="badge-flex-wrap">
               <span className="badge-primary">You (Primary)</span>
               {friends.map(f => (
@@ -335,58 +341,6 @@ function App() {
               <button type="submit" className="btn-primary split-btn-color" disabled={friends.length === 0}>Execute and Commit Split</button>
             </form>
           </section>
-        </div>
-      )}
-
-      {/* TAB 3: INNOVATIVE CYBERPUNK PORTFOLIO CARD ABOUT PAGE */}
-      {view === 'about' && (
-        <div className="page-padding">
-          <div className="portfolio-showcase-container">
-            <div className="portfolio-header-accent">
-              <span className="live-status-blip"></span>
-              <h3>DEVELOPER PROFILE CONSOLE</h3>
-            </div>
-            
-            <div className="portfolio-main-grid">
-              {/* Profile Meta block */}
-              <div className="portfolio-block profile-meta">
-                <h2>S. HARIHARAN</h2>
-                <p className="academic-standing">3rd Year &bull; BSc Computer Science</p>
-                <p className="academic-institution">Bharathiar University</p>
-              </div>
-
-              {/* Technical Core block */}
-              <div className="portfolio-block technical-stack">
-                <span className="block-tag-label">PRIMARY CORE STACK</span>
-                <div className="tech-badge-row">
-                  <span className="badge-glow">Python</span>
-                  <span className="badge-flat">HTML5</span>
-                  <span className="badge-flat">CSS3</span>
-                  <span className="badge-flat">JavaScript</span>
-                </div>
-                
-                <span className="block-tag-label" style={{marginTop: '1.25rem'}}>FOUNDATIONAL KNOWLEDGE</span>
-                <div className="tech-badge-row foundational">
-                  <span className="badge-dim">C</span>
-                  <span className="badge-dim">C++</span>
-                  <span className="badge-dim">Java</span>
-                </div>
-              </div>
-
-              {/* Endpoint Contacts block */}
-              <div className="portfolio-block network-endpoints">
-                <span className="block-tag-label">COMMUNICATIONS LAB</span>
-                <div className="endpoint-links">
-                  <a href="mailto:hxcoretech@gmail.com" className="endpoint-anchor email-glow">
-                    <span className="marker">&bull;</span> hxcoretech@gmail.com
-                  </a>
-                  <a href="https://instagram.com/hari.haran__07" target="_blank" rel="noopener noreferrer" className="endpoint-anchor insta-glow">
-                    <span className="marker">#</span> @hari.haran__07
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       )}
     </div>
