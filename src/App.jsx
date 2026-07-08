@@ -465,7 +465,7 @@ function App() {
                 Developer Profile: S. HARIHARAN
               </span>
               <span style={{ fontSize: '0.85rem', color: '#8a88a3' }}>
-                BSc Computer Science (3rd Year) &bull; Bharathiar University
+                BSc Computer Science &bull; Bharathiar University
               </span>
               <span style={{ fontSize: '0.8rem', color: '#64748b', marginTop: '2px' }}>
                 <strong style={{ color: '#00f0ff' }}>Core Stack:</strong> Python | <strong style={{ color: '#8a88a3' }}>Foundations:</strong> C, C++, Java, HTML, CSS, JavaScript
