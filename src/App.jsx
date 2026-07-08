@@ -29,7 +29,6 @@ function App() {
 
   const API_BASE = 'https://daily-expense-analysis.onrender.com/api';
 
-  // Synchronized Fetching using Auth Token headers
   const refreshData = async () => {
     if (!token) return;
     try {
@@ -55,7 +54,6 @@ function App() {
 
   const netBalance = analytics.total_income - analytics.total_expense;
 
-  // Authentication Logics
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
     setAuthError('');
@@ -96,7 +94,6 @@ function App() {
     setAuthError('');
   };
 
-  // Ledger Submissions
   const handleTransactionSubmit = async (e) => {
     e.preventDefault();
     if (!text || !amount) return alert('Please enter transaction details');
@@ -245,7 +242,7 @@ function App() {
             <form onSubmit={handleLoginSubmit} className="form-stack">
               <div className="input-field">
                 <label>System Unique ID / Username</label>
-                <input type="text" placeholder="e.g., admin or hari" value={loginUser} onChange={(e) => setLoginUser(e.target.value)} required />
+                <input type="text" placeholder="Enter Unique ID" value={loginUser} onChange={(e) => setLoginUser(e.target.value)} required />
               </div>
               <div className="input-field">
                 <label>Security Password</label>
@@ -253,12 +250,6 @@ function App() {
               </div>
               <button type="submit" className="btn-primary" style={{ marginTop: '0.5rem' }}>Authenticate Node</button>
             </form>
-            
-            <div style={{ marginTop: '1.25rem', padding: '0.75rem', background: '#1b192e', borderRadius: '8px', border: '1px solid #242238', fontSize: '0.75rem', color: '#8a88a3', lineHeight: 1.5 }}>
-              💡 <strong>System Demo Profiles Allocation:</strong><br />
-              &bull; Standard User Token ID: <code style={{ color: '#00f0ff' }}>hari</code> (Password: user123)<br />
-              &bull; Administrator Token ID: <code style={{ color: '#9d4edd' }}>admin</code> (Password: admin123)
-            </div>
           </div>
         </div>
       ) : (
@@ -395,7 +386,7 @@ function App() {
                             </div>
                           </div>
                         ))
-                  )}
+                      )}
                     </div>
                   </section>
                 </div>
@@ -455,50 +446,50 @@ function App() {
               </section>
             </div>
           )}
+
+          {/* EXPERT ACADEMIC PORTFOLIO CONTACT FOOTER PANEL - Hidden on Login Screen */}
+          <footer style={{
+            marginTop: 'auto',
+            background: '#12111f',
+            padding: '1.5rem 2rem',
+            borderTop: '2px solid #242238',
+            boxShadow: '0 -4px 20px rgba(0, 0, 0, 0.3)',
+            display: 'flex',
+            flexDirection: window.innerWidth > 768 ? 'row' : 'column',
+            justifyContent: 'space-between',
+            alignItems: window.innerWidth > 768 ? 'center' : 'flex-start',
+            gap: '1.25rem'
+          }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+              <span style={{ fontSize: '1rem', fontWeight: 900, color: '#00f0ff', letterSpacing: '0.02em' }}>
+                Developer Profile: S. HARIHARAN
+              </span>
+              <span style={{ fontSize: '0.85rem', color: '#8a88a3' }}>
+                BSc Computer Science (3rd Year) &bull; Bharathiar University
+              </span>
+              <span style={{ fontSize: '0.8rem', color: '#64748b', marginTop: '2px' }}>
+                <strong style={{ color: '#00f0ff' }}>Core Stack:</strong> Python | <strong style={{ color: '#8a88a3' }}>Foundations:</strong> C, C++, Java, HTML, CSS, JavaScript
+              </span>
+            </div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center' }}>
+              <a href="mailto:hxcoretech@gmail.com" style={{
+                color: '#ffffff', background: '#1b192e', border: '1px solid #242238', 
+                padding: '0.5rem 1rem', borderRadius: '8px', fontSize: '0.85rem', fontWeight: 700, 
+                textDecoration: 'none'
+              }}>
+                📧 hxcoretech@gmail.com
+              </a>
+              <a href="https://instagram.com/hari.haran__07" target="_blank" rel="noreferrer" style={{
+                color: '#00f0ff', background: 'rgba(0, 240, 255, 0.05)', border: '1px solid rgba(0, 240, 255, 0.2)', 
+                padding: '0.5rem 1rem', borderRadius: '8px', fontSize: '0.85rem', fontWeight: 700, 
+                textDecoration: 'none'
+              }}>
+                📸 @hari.haran__07
+              </a>
+            </div>
+          </footer>
         </>
       )}
-
-      {/* EXPERT ACADEMIC PORTFOLIO CONTACT FOOTER PANEL */}
-      <footer style={{
-        marginTop: 'auto',
-        background: '#12111f',
-        padding: '1.5rem 2rem',
-        borderTop: '2px solid #242238',
-        boxShadow: '0 -4px 20px rgba(0, 0, 0, 0.3)',
-        display: 'flex',
-        flexDirection: window.innerWidth > 768 ? 'row' : 'column',
-        justifyContent: 'space-between',
-        alignItems: window.innerWidth > 768 ? 'center' : 'flex-start',
-        gap: '1.25rem'
-      }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-          <span style={{ fontSize: '1rem', fontWeight: 900, color: '#00f0ff', letterSpacing: '0.02em' }}>
-            Developer Profile: S. HARIHARAN
-          </span>
-          <span style={{ fontSize: '0.85rem', color: '#8a88a3' }}>
-            BSc Computer Science (3rd Year) &bull; Bharathiar University
-          </span>
-          <span style={{ fontSize: '0.8rem', color: '#64748b', marginTop: '2px' }}>
-            <strong style={{ color: '#00f0ff' }}>Core Stack:</strong> Python | <strong style={{ color: '#8a88a3' }}>Foundations:</strong> C, C++, Java, HTML, CSS, JavaScript
-          </span>
-        </div>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center' }}>
-          <a href="mailto:hxcoretech@gmail.com" style={{
-            color: '#ffffff', background: '#1b192e', border: '1px solid #242238', 
-            padding: '0.5rem 1rem', borderRadius: '8px', fontSize: '0.85rem', fontWeight: 700, 
-            textDecoration: 'none'
-          }}>
-            📧 hxcoretech@gmail.com
-          </a>
-          <a href="https://instagram.com/hari.haran__07" target="_blank" rel="noreferrer" style={{
-            color: '#00f0ff', background: 'rgba(0, 240, 255, 0.05)', border: '1px solid rgba(0, 240, 255, 0.2)', 
-            padding: '0.5rem 1rem', borderRadius: '8px', fontSize: '0.85rem', fontWeight: 700, 
-            textDecoration: 'none'
-          }}>
-            📸 @hari.haran__07
-          </a>
-        </div>
-      </footer>
     </div>
   );
 }
